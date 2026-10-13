@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proyecto Semáforo Inteligente | 2º ESO</title>
+  <meta name="description" content="Proyecto de Computación y Robótica de 2º ESO: diseño, simulación y construcción de un semáforo inteligente con Tinkercad y Arduino." />
+  <link rel="icon" type="image/png" href="data:image/png;base64,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" />
+  <style>
+    :root{
+      --bg:#f6f7fb; --card:#ffffff; --ink:#1c2330; --muted:#667085;
+      --accent:#2855d9; --accent2:#183aa2; --soft:#eaf0ff; --ok:#16794a;
+      --warn:#a15c00; --danger:#b42318; --line:#e4e7ec; --code:#101828;
+      --shadow:0 10px 30px rgba(16,24,40,.08);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+    a{color:var(--accent)}
+    .hero{background:linear-gradient(135deg,#12256c 0%,#2855d9 60%,#5d7df0 100%);color:#fff;padding:72px 20px 54px}
+    .wrap{max-width:1120px;margin:0 auto}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+    .badge{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:6px 10px;border-radius:999px;font-size:.9rem;font-weight:700}
+    h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.05;margin:16px 0}
+    .lead{font-size:1.15rem;max-width:780px;color:#edf1ff}
+    .traffic{display:grid;grid-template-columns:repeat(3,68px);gap:18px;justify-content:center;align-items:center}
+    .light{width:68px;height:68px;border-radius:50%;box-shadow:inset 0 0 18px rgba(0,0,0,.28),0 8px 22px rgba(0,0,0,.18);border:5px solid rgba(255,255,255,.16)}
+    .red{background:#ef4444}.amber{background:#f7b32b}.green{background:#20b26b}
+    .hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:28px;backdrop-filter:blur(8px)}
+    .school-brand{display:flex;align-items:center;gap:16px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.22)}
+    .school-logo{width:98px;height:98px;object-fit:contain;background:#fff;border-radius:18px;padding:7px;box-shadow:0 8px 22px rgba(0,0,0,.16)}
+    .school-name{font-weight:850;font-size:1.05rem;line-height:1.25}
+    .school-sub{font-size:.88rem;color:#e7ecff;margin-top:4px}
+    nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .nav-inner{max-width:1120px;margin:0 auto;display:flex;gap:16px;align-items:center;overflow-x:auto;padding:11px 20px}
+    nav a{white-space:nowrap;text-decoration:none;font-weight:700;color:#344054;font-size:.93rem}
+    nav a:hover{color:var(--accent)}
+    main{padding:34px 20px 80px}
+    section{margin:0 auto 34px;max-width:1120px}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:var(--shadow)}
+    h2{font-size:1.8rem;margin-top:0}
+    h3{margin-top:0}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .callout{border-left:5px solid var(--accent);background:var(--soft);padding:16px 18px;border-radius:10px}
+    .callout strong{color:var(--accent2)}
+    .goal{background:#f0f9f4;border-left-color:var(--ok)}
+    .warning{background:#fff7ed;border-left-color:#f59e0b}
+    .danger{background:#fff1f0;border-left-color:var(--danger)}
+    ul,ol{padding-left:22px}
+    .phase{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+    .phase span{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--soft);color:var(--accent2);font-weight:900}
+    .session{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:14px 0;overflow:hidden}
+    .session summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:800;display:flex;align-items:center;justify-content:space-between;gap:15px}
+    .session summary::-webkit-details-marker{display:none}
+    .session summary::after{content:"＋";font-size:1.3rem;color:var(--accent)}
+    .session[open] summary::after{content:"−"}
+    .session-body{padding:0 20px 20px;border-top:1px solid var(--line)}
+    .meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+    .chip{background:#f2f4f7;border:1px solid #eaecf0;padding:5px 9px;border-radius:999px;font-size:.84rem;font-weight:700;color:#475467}
+    .challenge{background:#fff7ed;border:1px solid #fed7aa;border-radius:14px;padding:15px 16px;margin:14px 0}
+    .deliverable{background:#eefaf3;border:1px solid #b7e6c8;border-radius:14px;padding:15px 16px;margin:14px 0}
+    pre{background:var(--code);color:#f8fafc;padding:16px;border-radius:14px;overflow:auto;font-size:.92rem}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+    th{background:#f8fafc}
+    .rubric td:first-child{font-weight:800}
+    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    button,.btn{border:0;background:var(--accent);color:#fff;padding:10px 14px;border-radius:10px;font-weight:800;cursor:pointer;text-decoration:none}
+    button.secondary,.btn.secondary{background:#344054}
+    .small{font-size:.9rem;color:var(--muted)}
+    footer{padding:34px 20px 60px;color:#667085;text-align:center}
+    @media(max-width:850px){.hero-grid,.grid-2,.grid-3{grid-template-columns:1fr}.checkgrid{grid-template-columns:1fr}.hero{padding-top:50px}.traffic{margin-top:8px}}
+    @media print{nav,.btnrow{display:none!important}body{background:#fff}.panel,.session{box-shadow:none;break-inside:avoid}.session{display:block}.session-body{display:block!important}}
+  </style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge">Computación y Robótica · 2º ESO</span>
+      <h1>Proyecto Semáforo Inteligente</h1>
+      <p class="lead">Durante las próximas semanas vamos a diseñar, programar y construir un semáforo capaz de responder a peatones y vehículos. Empezaremos desde cero con Tinkercad y Arduino y terminaremos con una maqueta funcional.</p>
+    </div>
+    <div class="hero-card">
+      <div class="school-brand">
+        <img class="school-logo" src="data:image/png;base64,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" alt="Logo del IES María Inmaculada">
+        <div><div class="school-name">IES María Inmaculada</div><div class="school-sub">Computación y Robótica · 2.º ESO</div></div>
+      </div>
+      <div class="traffic" aria-label="Semáforo decorativo">
+        <div class="light red"></div><div class="light amber"></div><div class="light green"></div>
+      </div>
+      <p style="margin:22px 0 0"><strong>Mi objetivo:</strong> que al terminar no solo consigas que funcione, sino que seas capaz de explicar por qué funciona, detectar errores y mejorarlo.</p>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#reto">El reto</a><a href="#objetivos">Qué aprenderás</a><a href="#material">Material</a><a href="#fases">Sesiones</a><a href="#entrega">Entrega final</a><a href="#evaluacion">Evaluación</a>
+  </div>
+</nav>
+
+<main>
+<section id="reto" class="panel">
+  <h2>🚦 El reto</h2>
+  <p>Imagina que el Ayuntamiento quiere mejorar la seguridad de un paso de peatones cercano a un instituto. Mi propuesta para vosotros es construir un sistema que regule el tráfico y el paso de peatones de forma segura.</p>
+  <div class="callout">
+    <strong>Tu misión:</strong> construir, primero en Tinkercad y después físicamente, un <strong>Semáforo Inteligente</strong> controlado por Arduino.
+  </div>
+  <p>El sistema final deberá controlar las luces de vehículos y peatones, detectar la petición de cruce mediante un pulsador y, en su versión avanzada, utilizar un sensor para detectar vehículos y tomar decisiones.</p>
+</section>
+
+<section id="objetivos" class="grid-2">
+  <div class="panel">
+    <h2>🎯 Qué vas a aprender</h2>
+    <ul>
+      <li>Utilizar Tinkercad Circuits para crear y simular circuitos.</li>
+      <li>Reconocer los elementos básicos de una placa Arduino UNO.</li>
+      <li>Conectar LEDs, resistencias, pulsadores y sensores.</li>
+      <li>Programar salidas y entradas digitales.</li>
+      <li>Usar secuencias, condiciones, variables y temporizaciones.</li>
+      <li>Diseñar algoritmos y diagramas de flujo.</li>
+      <li>Probar, detectar errores y mejorar un prototipo.</li>
+      <li>Construir un sistema que resuelva un problema del mundo real.</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h2>🧠 Cómo vamos a trabajar</h2>
+    <p>No voy a darte el proyecto terminado desde el principio. Lo construiremos <strong>paso a paso</strong>.</p>
+    <ol>
+      <li>Primero aprenderás a manejar Tinkercad.</li>
+      <li>Después controlarás un LED.</li>
+      <li>Luego tres LEDs.</li>
+      <li>Más tarde añadirás peatones y un pulsador.</li>
+      <li>Finalmente incorporarás sensores y comportamiento inteligente.</li>
+    </ol>
+    <div class="callout goal"><strong>Regla de oro:</strong> no quiero que copies código sin entenderlo. Quiero que sepas explicar cada parte de lo que haces.</div>
+  </div>
+</section>
+
+<section id="material" class="panel">
+  <h2>🧰 Material que utilizaremos</h2>
+  <div class="grid-3">
+    <div><h3>Electrónica</h3><ul><li>Arduino UNO</li><li>Protoboard</li><li>5 LEDs</li><li>Resistencias de 220 Ω</li><li>Pulsador</li><li>Cables Dupont</li><li>Sensor ultrasónico HC-SR04</li><li>Buzzer (opcional)</li></ul></div>
+    <div><h3>Software</h3><ul><li>Tinkercad Circuits</li><li>Editor de código de Arduino</li><li>Monitor Serie</li></ul></div>
+    <div><h3>Maqueta</h3><ul><li>Cartón o cartulina</li><li>Material reciclado</li><li>Coches pequeños</li><li>Regla, tijeras y pegamento</li><li>Elementos decorativos</li></ul></div>
+  </div>
+</section>
+
+
+<section id="fases">
+  <div class="phase"><span>1</span><div><h2 style="margin:0">Fase 1 · Tinkercad, electrónica y Arduino</h2><p class="small">Sesiones 1 a 4</p></div></div>
+
+  <details class="session" id="s1"><summary>Sesión 1 · Primer contacto con Tinkercad y Arduino</summary><div class="session-body">
+    <div class="meta"><span class="chip">Tinkercad</span><span class="chip">Arduino UNO</span><span class="chip">Circuitos</span></div>
+    <p>Hoy quiero que te familiarices con el entorno que vamos a utilizar. No necesitas saber nada de Arduino todavía.</p>
+    <h3>Lo que tienes que hacer</h3>
+    <ol><li>Entra en Tinkercad y abre la sección <strong>Circuits</strong>.</li><li>Crea un circuito nuevo.</li><li>Localiza una placa Arduino UNO.</li><li>Añade una protoboard, un LED, una resistencia y varios cables.</li><li>Aprende a iniciar y detener la simulación.</li></ol>
+    <div class="challenge"><strong>Reto:</strong> coloca todos los componentes que te indique y organízalos de forma clara. Todavía no hace falta conectar nada.</div>
+    <div class="deliverable"><strong>Al terminar:</strong> enséñame tu circuito organizado y dime para qué crees que sirve cada componente.</div>
+  </div></details>
+
+  <details class="session" id="s2"><summary>Sesión 2 · Nuestro primer circuito con LED</summary><div class="session-body">
+    <div class="meta"><span class="chip">LED</span><span class="chip">Resistencia</span><span class="chip">Protoboard</span></div>
+    <p>Hoy vamos a montar nuestro primer circuito. Antes de programar, quiero que entiendas cómo se conecta un LED y por qué necesita una resistencia.</p>
+    <h3>Ideas básicas</h3>
+    <ul><li>Un LED tiene polaridad: no da igual cómo lo conectes.</li><li>La resistencia limita la corriente y protege el LED.</li><li>GND es la referencia de tierra del circuito.</li></ul>
+    <div class="challenge"><strong>Reto:</strong> consigue que un LED quede correctamente conectado en la protoboard.</div>
+    <div class="callout warning"><strong>Importante:</strong> si un LED no enciende, antes de pensar que está roto revisa su orientación y las conexiones.</div>
+  </div></details>
+
+  <details class="session" id="s3"><summary>Sesión 3 · Mi primer programa con Arduino</summary><div class="session-body">
+    <div class="meta"><span class="chip">setup()</span><span class="chip">loop()</span><span class="chip">digitalWrite()</span><span class="chip">delay()</span></div>
+    <p>Hoy Arduino empieza a dar órdenes. Nuestro objetivo será encender y apagar un LED automáticamente.</p>
+    <pre><code>void setup() {
+  pinMode(8, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(8, HIGH);
+  delay(1000);
+  digitalWrite(8, LOW);
+  delay(1000);
+}</code></pre>
+    <p>No copies sin pensar. Quiero que puedas explicar qué significa cada línea.</p>
+    <div class="challenge"><strong>Reto 1:</strong> haz que el LED permanezca encendido 2 segundos.<br><strong>Reto 2:</strong> haz que se apague solo medio segundo.</div>
+  </div></details>
+
+  <details class="session" id="s4"><summary>Sesión 4 · Controlamos varios LEDs</summary><div class="session-body">
+    <div class="meta"><span class="chip">3 LEDs</span><span class="chip">Salidas digitales</span></div>
+    <p>Hoy vamos a controlar tres LEDs independientes. Serán los tres colores de nuestro futuro semáforo.</p>
+    <ul><li>Rojo → pin 8</li><li>Amarillo → pin 9</li><li>Verde → pin 10</li></ul>
+    <div class="challenge"><strong>Reto:</strong> enciende cada LED por separado y comprueba que los demás permanecen apagados.</div>
+    <div class="deliverable"><strong>Al terminar:</strong> debes tener un circuito con tres LEDs completamente controlables desde Arduino.</div>
+  </div></details>
+
+  <div class="phase" style="margin-top:34px"><span>2</span><div><h2 style="margin:0">Fase 2 · Construimos el semáforo</h2><p class="small">Sesiones 5 a 8</p></div></div>
+
+  <details class="session" id="s5"><summary>Sesión 5 · ¿Cómo funciona realmente un semáforo?</summary><div class="session-body">
+    <p>Antes de programar, quiero que pienses. Observa un semáforo real y responde:</p>
+    <ul><li>¿Qué estados tiene?</li><li>¿En qué orden aparecen las luces?</li><li>¿Qué luces nunca deben encenderse juntas?</li><li>¿Qué tiempos tendría sentido utilizar?</li></ul>
+    <div class="challenge"><strong>Reto:</strong> dibuja el algoritmo o diagrama de flujo de un semáforo de vehículos.</div>
+    <div class="deliverable"><strong>Entrega de sesión:</strong> diagrama de flujo o esquema de estados.</div>
+  </div></details>
+
+  <details class="session" id="s6"><summary>Sesión 6 · Programamos el semáforo de vehículos</summary><div class="session-body">
+    <p>Ya tienes los tres LEDs y ya tienes el algoritmo. Ahora toca unir las dos cosas.</p>
+    <p>Secuencia propuesta:</p>
+    <ul><li>Verde: 5 segundos</li><li>Amarillo: 2 segundos</li><li>Rojo: 5 segundos</li></ul>
+    <div class="challenge"><strong>Reto:</strong> consigue que la secuencia se repita de forma continua y sin combinaciones incorrectas.</div>
+    <div class="callout"><strong>Depuración:</strong> si algo falla, anota primero qué esperabas que ocurriera y qué ha ocurrido realmente.</div>
+  </div></details>
+
+  <details class="session" id="s7"><summary>Sesión 7 · Añadimos el semáforo de peatones</summary><div class="session-body">
+    <p>Añadiremos dos LEDs más:</p>
+    <ul><li>Rojo peatón → pin 11</li><li>Verde peatón → pin 12</li></ul>
+    <p>Ahora tendrás que coordinar dos sistemas al mismo tiempo.</p>
+    <div class="danger callout"><strong>Regla de seguridad:</strong> nunca pueden estar en verde al mismo tiempo vehículos y peatones.</div>
+    <div class="challenge"><strong>Reto:</strong> programa una secuencia segura entre coches y peatones.</div>
+  </div></details>
+
+  <details class="session" id="s8"><summary>Sesión 8 · Seguridad vial y tiempos de transición</summary><div class="session-body">
+    <p>Hoy vamos a revisar nuestro sistema como si fuéramos ingenieros de seguridad.</p>
+    <ol><li>Analiza todas las combinaciones posibles.</li><li>Comprueba que no hay situaciones peligrosas.</li><li>Añade pequeños tiempos de seguridad antes de abrir el paso contrario.</li></ol>
+    <div class="challenge"><strong>Reto:</strong> explica qué accidente podría provocar una mala secuencia y cómo lo has evitado en tu programa.</div>
+  </div></details>
+
+  <div class="phase" style="margin-top:34px"><span>3</span><div><h2 style="margin:0">Fase 3 · El semáforo empieza a tomar decisiones</h2><p class="small">Sesiones 9 a 12</p></div></div>
+
+  <details class="session" id="s9"><summary>Sesión 9 · Entradas digitales y pulsadores</summary><div class="session-body">
+    <p>Hasta ahora Arduino solo ha dado órdenes. Hoy aprenderá a <strong>recibir información</strong>.</p>
+    <pre><code>int estadoBoton = digitalRead(2);
+
+if (estadoBoton == HIGH) {
+  // Aquí escribiremos qué debe ocurrir
+}</code></pre>
+    <div class="challenge"><strong>Reto:</strong> cuando pulses un botón, enciende un LED. Cuando no pulses, mantenlo apagado.</div>
+    <div class="callout goal"><strong>Idea clave:</strong> entrada → decisión → salida.</div>
+  </div></details>
+
+  <details class="session" id="s10"><summary>Sesión 10 · El peatón solicita cruzar</summary><div class="session-body">
+    <p>Integraremos el pulsador dentro del semáforo.</p>
+    <ol><li>Estado normal: vehículos en verde y peatones en rojo.</li><li>El peatón pulsa.</li><li>Arduino detecta la petición.</li><li>Vehículos pasan a amarillo.</li><li>Vehículos pasan a rojo.</li><li>Peatones pasan a verde.</li></ol>
+    <div class="challenge"><strong>Reto:</strong> el cambio no debe ser instantáneo. Tiene que existir una transición segura.</div>
+  </div></details>
+
+  <details class="session" id="s11"><summary>Sesión 11 · Avisamos de que el tiempo se acaba</summary><div class="session-body">
+    <p>Una persona empieza a cruzar y quedan pocos segundos. ¿Cómo puede saber que debe terminar de cruzar?</p>
+    <p>Haremos que el LED verde de peatones parpadee durante los últimos segundos.</p>
+    <div class="challenge"><strong>Reto:</strong> crea un parpadeo visible y fácil de entender sin alterar la seguridad del sistema.</div>
+  </div></details>
+
+  <details class="session" id="s12"><summary>Sesión 12 · Accesibilidad: añadimos sonido</summary><div class="session-body">
+    <p>Un buen sistema debe tener en cuenta a todas las personas. Vamos a pensar en usuarios con discapacidad visual.</p>
+    <ul><li>Pitido lento → tiempo suficiente para cruzar.</li><li>Pitido rápido → el tiempo está terminando.</li></ul>
+    <div class="challenge"><strong>Reto opcional:</strong> añade un buzzer y diseña dos ritmos distintos.</div>
+    <div class="deliverable"><strong>Reflexión:</strong> explica por qué la accesibilidad también forma parte del diseño tecnológico.</div>
+  </div></details>
+
+  <div class="phase" style="margin-top:34px"><span>4</span><div><h2 style="margin:0">Fase 4 · Convertimos el semáforo en inteligente</h2><p class="small">Sesiones 13 a 16</p></div></div>
+
+  <details class="session" id="s13"><summary>Sesión 13 · Introducción al sensor ultrasónico</summary><div class="session-body">
+    <p>El HC-SR04 nos permitirá detectar la presencia de un vehículo midiendo distancia.</p>
+    <p>La idea es sencilla: el sensor envía una señal, espera a que rebote y mide el tiempo de regreso.</p>
+    <div class="challenge"><strong>Reto:</strong> utiliza el sensor como un pequeño metro digital y observa la distancia en el Monitor Serie.</div>
+    <div class="callout"><strong>Hoy aparecen dos conceptos nuevos:</strong> variables y lectura de sensores.</div>
+  </div></details>
+
+  <details class="session" id="s14"><summary>Sesión 14 · Detectamos vehículos</summary><div class="session-body">
+    <p>Ahora situaremos el sensor como si estuviera junto a una carretera.</p>
+    <pre><code>if (distancia &lt; 20) {
+  // Hay un vehículo cerca
+} else {
+  // No hay vehículo
+}</code></pre>
+    <div class="challenge"><strong>Reto:</strong> decide un umbral de distancia y comprueba con varias posiciones cuándo el sistema considera que hay un coche.</div>
+    <div class="deliverable"><strong>Registra:</strong> al menos cuatro medidas de distancia y el resultado detectado.</div>
+  </div></details>
+
+  <details class="session" id="s15"><summary>Sesión 15 · Diseñamos el comportamiento inteligente</summary><div class="session-body">
+    <p>Hoy no quiero que programes inmediatamente. Primero tienes que decidir <strong>qué debe hacer</strong> el sistema.</p>
+    <p>Una propuesta posible:</p>
+    <ul><li>Si no hay coches, permitir antes el paso de peatones.</li><li>Si hay vehículos, respetar un tiempo mínimo de circulación.</li><li>Si se detecta tráfico durante bastante tiempo, prolongar el verde.</li></ul>
+    <div class="challenge"><strong>Reto:</strong> crea el diagrama de flujo del comportamiento inteligente de tu grupo.</div>
+    <div class="deliverable"><strong>Entrega:</strong> diagrama antes de empezar a programar.</div>
+  </div></details>
+
+  <details class="session" id="s16"><summary>Sesión 16 · Programamos el sistema completo</summary><div class="session-body">
+    <p>Esta es una sesión de integración. Tendrás que unir:</p>
+    <ul><li>5 LEDs</li><li>Pulsador</li><li>Sensor ultrasónico</li><li>Condiciones</li><li>Variables</li><li>Temporizaciones</li></ul>
+    <div class="callout warning"><strong>Es normal que aparezcan errores.</strong> El objetivo de hoy no es acertar a la primera, sino aprender a localizar el fallo y corregirlo.</div>
+    <div class="challenge"><strong>Reto:</strong> demuestra que tu sistema reacciona de forma diferente según haya o no vehículos.</div>
+  </div></details>
+
+  <div class="phase" style="margin-top:34px"><span>5</span><div><h2 style="margin:0">Fase 5 · Construcción, pruebas y presentación</h2><p class="small">Sesiones 17 a 19</p></div></div>
+
+  <details class="session" id="s17"><summary>Sesión 17 · Construimos la maqueta</summary><div class="session-body">
+    <p>Ha llegado el momento de convertir el circuito en un producto visible.</p>
+    <p>La maqueta debe incluir, como mínimo, carretera, paso de peatones, aceras, semáforos y zona para colocar los componentes.</p>
+    <div class="challenge"><strong>Reto:</strong> busca una solución limpia para esconder cables y dejar visibles solo los elementos necesarios.</div>
+    <div class="deliverable"><strong>Al terminar:</strong> la maqueta debe estar suficientemente avanzada como para poder integrar la electrónica.</div>
+  </div></details>
+
+  <details class="session" id="s18"><summary>Sesión 18 · Integración y pruebas</summary><div class="session-body">
+    <p>Hoy vamos a trabajar como un equipo de pruebas. No basta con que “parezca” que funciona.</p>
+    <table><thead><tr><th>Prueba</th><th>Resultado</th></tr></thead><tbody>
+      <tr><td>El semáforo de vehículos realiza bien su ciclo</td><td>✅ / ❌</td></tr>
+      <tr><td>El semáforo peatonal funciona correctamente</td><td>✅ / ❌</td></tr>
+      <tr><td>El pulsador es detectado</td><td>✅ / ❌</td></tr>
+      <tr><td>El verde peatonal avisa antes de terminar</td><td>✅ / ❌</td></tr>
+      <tr><td>El sensor detecta un vehículo</td><td>✅ / ❌</td></tr>
+      <tr><td>Nunca coinciden los dos verdes</td><td>✅ / ❌</td></tr>
+      <tr><td>El sistema vuelve correctamente al estado inicial</td><td>✅ / ❌</td></tr>
+    </tbody></table>
+    <div class="challenge"><strong>Reto:</strong> documenta al menos un error que hayas encontrado y explica cómo lo solucionaste.</div>
+  </div></details>
+
+  <details class="session" id="s19"><summary>Sesión 19 · Presentación final</summary><div class="session-body">
+    <p>Cada equipo dispondrá de unos minutos para demostrar su proyecto. No quiero una presentación larga: quiero una demostración clara.</p>
+    <ol><li>Enseña el funcionamiento normal.</li><li>Activa una petición de peatón.</li><li>Demuestra la detección de un vehículo.</li><li>Explica qué hace “inteligente” vuestro sistema.</li><li>Cuenta un problema que tuvisteis y cómo lo resolvisteis.</li></ol>
+    <div class="deliverable"><strong>Producto final:</strong> maqueta funcional + explicación técnica + memoria breve.</div>
+  </div></details>
+</section>
+
+<section id="entrega" class="panel">
+  <h2>📦 Qué tenéis que entregar</h2>
+  <p>La memoria será breve. Prefiero que dediquéis el tiempo a construir, programar y entender el proyecto.</p>
+  <ol>
+    <li>Nombre de los integrantes del equipo.</li>
+    <li>Explicación breve del problema que resuelve el sistema.</li>
+    <li>Esquema del circuito.</li>
+    <li>Diagrama de flujo.</li>
+    <li>Código Arduino.</li>
+    <li>Una o dos fotografías de la maqueta.</li>
+    <li>Explicación de la mejora inteligente.</li>
+    <li>Problemas encontrados y soluciones aplicadas.</li>
+  </ol>
+  <div class="callout goal"><strong>Extensión recomendada:</strong> 2-3 páginas. No necesito una memoria larga, necesito una memoria clara.</div>
+</section>
+
+<section id="evaluacion" class="panel">
+  <h2>✅ Cómo voy a evaluar el proyecto</h2>
+  <table class="rubric"><thead><tr><th>Aspecto</th><th>Qué observaré</th></tr></thead><tbody>
+    <tr><td>Diseño y algoritmo</td><td>Comprendes el problema y planteas una solución lógica antes de programar.</td></tr>
+    <tr><td>Programación</td><td>Utilizas correctamente salidas, entradas, condiciones, variables y temporizaciones.</td></tr>
+    <tr><td>Sistema físico</td><td>El circuito está bien montado y los componentes funcionan correctamente.</td></tr>
+    <tr><td>Resolución de problemas</td><td>Pruebas, detectas errores, propones soluciones y mejoras el prototipo.</td></tr>
+    <tr><td>Producto final</td><td>La maqueta funciona y permite entender claramente el sistema.</td></tr>
+    <tr><td>Explicación</td><td>Eres capaz de explicar qué hace el programa y por qué.</td></tr>
+  </tbody></table>
+  <div class="callout"><strong>Recuerda:</strong> una maqueta muy bonita no compensa un programa que no entiendes. Voy a valorar especialmente que sepas explicar y justificar tus decisiones.</div>
+</section>
+
+<section class="panel">
+  <h2>🏁 Antes de empezar</h2>
+  <p>No pasa nada si al principio Arduino te parece complicado. Vamos a construir el proyecto por partes y cada pequeño reto servirá para el siguiente. Mi consejo es que no tengas miedo a equivocarte: en programación y robótica, encontrar errores forma parte del trabajo.</p>
+  <div class="btnrow"><a class="btn" href="#s1">Empezar por la sesión 1</a><button class="secondary" onclick="window.print()">Imprimir / Guardar en PDF</button></div>
+</section>
+</main>
+
+<footer>
+  IES María Inmaculada · Computación y Robótica · 2.º ESO · Escuela 4.0 / Proyecto STEAM
+</footer>
+
+</body>
+</html>
